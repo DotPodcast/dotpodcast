@@ -1,6 +1,7 @@
 Title: DotPodcast JSON feed specification v1
 Date: 2017-10-12
 Author: Mark
+Slug: spec-v1
 Summary: Version 1 of the DotPodcast JSON Feed spec
 
 
