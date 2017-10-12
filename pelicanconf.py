@@ -28,10 +28,10 @@ DEFAULT_PAGINATION = 10
 RELATIVE_URLS = True
 
 # Theme-specific settings
-HEADER_COVER = '/images/header.jpg'
+HEADER_COVER = 'images/header.jpg'
 MENUITEMS = (
-    ('Home', '/'),
-    ('Blog', '/blog.html')
+    ('Home', ''),
+    ('Blog', 'blog.html')
 )
 
 DIRECT_TEMPLATES = ['blog']
@@ -41,10 +41,12 @@ PAGINATED_DIRECT_TEMPLATES = ['blog']
 AUTHORS_BIO = {
     'mark': {
         'name': "Mark Steadman",
-        'cover': '/images/mark-cover.jpg',
-        'image': '/images/mark-avatar.jpg',
+        'cover': 'images/mark-cover.jpg',
+        'image': 'images/mark-avatar.jpg',
         'website': 'https://steadman.io/',
         'location': 'Birmingham, UK',
-        'bio': 'Mark runs the Podiant podcast hosting service, and handles the JSON Feed spec extension at DotPodcast'
+        'bio': 'Mark runs the Podiant podcast hosting service, and handles the JSON Feed spec extension at DotPodcast',
+        'twitter': 'iamsteadman',
+        'github': 'iamsteadman'
     }
 }

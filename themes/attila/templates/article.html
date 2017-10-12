@@ -126,18 +126,18 @@
         <!-- TODO : Modified check -->
         {% if article.modified %}
             <span class="post-meta"> | Updated on {{ article.locale_modified }}</span>
-        {% endif %}        
+        {% endif %}
         {% if article.header_cover %}
             <div class="post-cover cover" style="background-image: url('{{ article.header_cover }}')">
         {% elif HEADER_COVER %}
-            <div class="post-cover cover" style="background-image: url('{{ HEADER_COVER }}')">            
+            <div class="post-cover cover" style="background-image: url('{{ HEADER_COVER }}')">
         {% elif HEADER_COLOR %}
             <div class="post-cover cover" style="background-color: {{ HEADER_COLOR }}">
         {% else %}
             <div class="post-cover cover" style="background-image: url('{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/post-bg.jpg')">
-        {% endif %}        
+        {% endif %}
       </div>
-    </header>    
+    </header>
 {% endblock header %}
 
 {% block content %}
@@ -177,11 +177,11 @@
                 <aside class="post-author">
                     {% if AUTHORS_BIO[author.name.lower()].image %}
                         <figure class="post-author-avatar">
-                            <img src="{{AUTHORS_BIO[author.name.lower()].image}}" alt="{{author.name | capitalize}}" />
+                            <img src="{{ SITEURL }}/{{AUTHORS_BIO[author.name.lower()].image}}" alt="{{author.name | capitalize}}" />
                         </figure>
                     {% endif %}
                     <div class="post-author-bio">
-                        <h4 class="post-author-name"><a href="{{ SITEURL }}/{{author.url}}">{{author.name | capitalize}}</a></h4>
+                        <h4 class="post-author-name"><a href="{{ SITEURL }}/{{author.url}}">{{AUTHORS_BIO[author.name.lower()].name | capitalize}}</a></h4>
                         {% if AUTHORS_BIO[author.name.lower()].bio %}
                             <p class="post-author-about">{{AUTHORS_BIO[author.name.lower()].bio}}</p>
                         {% endif %}
@@ -194,13 +194,10 @@
                         {% if AUTHORS_BIO[author.name.lower()].twitter %}
                             <span class="post-author-twitter"><a target="_blank" href="https://twitter.com/{{AUTHORS_BIO[author.name.lower()].twitter}}"><i class="ic ic-twitter"></i> Twitter</a></span>
                         {% endif %}
-                        {% if AUTHORS_BIO[author.name.lower()].facebook %}
-                            <span class="post-author-facebook"><a target="_blank" href="https://facebook.com/{{AUTHORS_BIO[author.name.lower()].facebook}}"><i class="ic ic-facebook"></i> Facebook</a></span>
-                        {% endif %}
                     </div>
                     <div class="clear"></div>
                 </aside>
-                {% endif %} 
+                {% endif %}
                 {% endfor %}
 
                 </section>
@@ -216,14 +213,14 @@
                     {% endif %}
                     var disqus_url = '{{ SITEURL }}/{{ article.url }}';
                 </script>
-                <noscript>Please enable JavaScript to view the comments.</noscript>                  
+                <noscript>Please enable JavaScript to view the comments.</noscript>
                 <section class="post-comments">
                     {% if article.disqus_identifier %}
                         <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="{{ article.disqus_identifier }}" >Show Comments</a>
                     {% else %}
                         <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/{{ article.url }}" >Show Comments</a>
                     {% endif %}
-                    <div id="disqus_thread"></div>                  
+                    <div id="disqus_thread"></div>
                 </section>
                 {% endif %}
 
