@@ -45,7 +45,7 @@ easily-parsable and human-readable syntax. And so, JSON Feed.
 
 ### Our JSON Feed extension
 
-Our spec adds an extension called `_podcast` to the header section
+Our spec adds an extension called `_dotpodcast` to the header section
 (before the `items` list) and the `items` list itself. For example:
 
 ```json
