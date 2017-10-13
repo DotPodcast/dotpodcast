@@ -42,7 +42,7 @@ The following are the first-party taxonomies and terms.
 
 - [Gender](gender): used to denote the gender topics discussed in the podcast (for example: a transgender panel discussion).
 
-- [Humor](humor): the style(s) of humour used in this podcast.
+- [Humor](humor): the style(s) of humour employed in the podcast.
 
 - [Music](music): the genre(s) of music covered in the podcast.
 

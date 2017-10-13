@@ -2,7 +2,7 @@ Title: Humor (humour)
 Slug: taxonomies/humor
 
 
-The style of humour employed within the podcast.
+The style(s) of humour employed in the podcast.
 
 Please note that for standardisation, the spec URI spells humour without the U, but app developers should localise the spelling for their own market when displaying the name.
 
