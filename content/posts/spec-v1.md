@@ -5,10 +5,7 @@ Slug: spec-v1
 Summary: Version 1 of the DotPodcast JSON Feed spec
 
 
-The DotPodcast JSON Feed spec is derived from the original
-[JSON Feed](https://jsonfeed.org/) spec, and makes no modifications
-to its structure. A sample, taken directly from their documentation
-looks like this:
+The DotPodcast JSON Feed spec is derived from the original [JSON Feed](https://jsonfeed.org/) spec, and makes no modifications to its structure. A sample, taken directly from their documentation looks like this:
 
 ```json
 {
@@ -33,20 +30,13 @@ looks like this:
 
 ### Why JSON and not RSS?
 
-XML (on which RSS is based) is slow and difficult to parse. New apps
-and services built around podcasting use it because it's what everyone
-uses, and moving people to another system is difficult, as the RSS spec
-(and its podcast-specific additions, provided by Apple) were built up
-over time.
+XML (on which RSS is based) is slow and difficult to parse. New apps and services built around podcasting use it because it's what everyone uses, and moving people to another system is difficult, as the RSS spec (and its podcast-specific additions, provided by Apple) were built up over time.
 
-But since DotPodcast is making fundamental changes to the way the
-entire podcasting ecosystem operates, it makes sense to adopt a more
-easily-parsable and human-readable syntax. And so, JSON Feed.
+But since DotPodcast is making fundamental changes to the way the entire podcasting ecosystem operates, it makes sense to adopt a more easily-parsable and human-readable syntax. And so, JSON Feed.
 
 ### Our JSON Feed extension
 
-Our spec adds an extension called `_dotpodcast` to the header section
-(before the `items` list) and the `items` list itself. For example:
+Our spec adds an extension called `_dotpodcast` to the header section (before the `items` list) and the `items` list itself. For example:
 
 ```json
 {
@@ -95,6 +85,23 @@ Our spec adds an extension called `_dotpodcast` to the header section
 
 ### The header object
 
-The header `_dotpodcast` object is the one that appears before the
-list of items. It contains information about the podcast itself, that
-isn't covered by the JSON Feed spec.
+The header `_dotpodcast` object is the one that appears before the list of items. It contains information about the podcast itself, that isn't covered by the JSON Feed spec.
+
+- `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec, not the
+JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
+
+- `feed_title` (optional, string) is the title of the feed as it should appear in a podcast app or directory. This may be different from the name of the JSON Feed itself.
+
+- `artwork` (optional but highly recommended, object) specifies the podcast cover artwork at varying sizes:
+    - `@1x` (required, string) is the URL to a 1400x1400 image.
+    - `@2x` (required, string) is the URL to a 2800x2800 image.
+    - Any other sizes can be added here, that may be supported by third-party directories such as Apple Podcasts.
+
+- `subtitle` (optional but recommended, string) is a short sentence that describes the podcast. For example, a podcast title might be "Beware of the Leopard", with a subtitle of "The Hitchhiker's Guide to the Galaxy podcast".
+
+- `publisher` (optional, object) specifies information about the publisher of theh podcast (for example, NPR or Gimlet Media):
+    - `name` (optional, string) is the publisher's name.
+    - `url` (optional, string) is the URL of a site owned by the publisher. When publishing multiple podcasts under the same publisher, it is important to keep the URL the same, as this will become the unique identifier for that publisher, and will enable directories to find other podcasts by the same publisher.
+    - `logo` (optional, string) is the URL to a logo for the publisher. It should be square and relatively large — such as 512x512 — and should use transparency where appropriate, since it may be rendered on a non-white background.
+
+- `taxonomies` (optional but recommended, object) is a collection of taxonomy and term URI pairs that categorise the podcast. (See the [list of taxonomies](../taxonomies))
