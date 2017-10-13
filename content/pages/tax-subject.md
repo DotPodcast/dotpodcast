@@ -94,6 +94,7 @@ This may also be considiered "K - 12"
 ### [Local news](#local-news)
 ### [National news](#national-news)
 ### [Political news](#political-news)
+### [Technology news](#technology-news)
 ### [World news](#world-news)
 
 ---
@@ -122,6 +123,13 @@ This may also be considiered "K - 12"
 ### [Outdoor sport](#outdoor-sport)
 ### [College and high school sport](#college-and-high-school-sport)
 ### [Professional sport](#professional-sport)
+
+---
+
+## [Technology](#technology)
+### [Gadgets](#gadgets)
+### [Podcasting](#podcasting)
+### [Software how-to](#software-how-to)
 
 ---
 
