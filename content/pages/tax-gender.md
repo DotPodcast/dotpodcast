@@ -17,6 +17,16 @@ The combination of masculine and feminine characteristics. [Wikipedia definition
 
 A gender identity that includes any two gender identities and behaviours, possibly depending on context. [Wikipedia definition](https://en.wikipedia.org/wiki/Bigender)
 
+## [Cisgender female](#cisgender-female)
+
+A person born female who identifies as female. [Wikipedia definition of Cisgender](https://en.wikipedia.org/wiki/Cisgender)
+
+## [Cisgender male](#cisgender-male)
+
+A person born male who identifies as male. [Wikipedia definition of Cisgender](https://en.wikipedia.org/wiki/Cisgender)
+
+## [Cisgender male](#cisgender-male)
+
 ## [Gender bender](#gender-bender)
 
 A person who disrupts, or "bends", expected gender roles. [Wikipedia definition](https://en.wikipedia.org/wiki/Gender_bender)
