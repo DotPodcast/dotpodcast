@@ -52,6 +52,8 @@ The following are the first-party taxonomies and terms.
 
 - [Religion](religion): used to denote the religion(s) discussed in the podcast (for example: a Christian music review podcast).
 
+- [Sexuality](sexuality): the sexuality or sexualities that are the focus of the podcast.
+
 - [Subject](subject): the subject matters discussed in the podcast.
 
 ## Third-party taxonomies and terms
