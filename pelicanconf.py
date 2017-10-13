@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = u'DotPodcast Inc'
 SITENAME = u'DotPodcast'
-SITEURL = ''
+SITEURL = 'http://localhost:8000'
 
 PATH = 'content'
 TIMEZONE = 'EST'
@@ -25,7 +25,11 @@ LINKS = ()
 SOCIAL = ()
 
 DEFAULT_PAGINATION = 10
-RELATIVE_URLS = True
+RELATIVE_URLS = False
+PAGE_URL = '{slug}'
+PAGE_SAVE_AS = '{slug}/index.html'
+ARTICLE_URL = '{slug}'
+ARTICLE_SAVE_AS = '{slug}/index.html'
 
 # Theme-specific settings
 HEADER_COVER = 'images/header.jpg'
