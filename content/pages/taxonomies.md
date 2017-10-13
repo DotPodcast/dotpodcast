@@ -38,6 +38,8 @@ The following are the first-party taxonomies and terms.
 
 - [Country](country): the country or countries most relevant to the podcast (for example, a British Premier League football podcast would list "United Kingdom" as a country term).
 
+- [Ethnicity](ethnicity): used to denote the ethnical topics discussed in the podcast (for example: a black history documentary series).
+
 - [Format](format): the format of the podcast (live, documentary, etc).
 
 - [Gender](gender): used to denote the gender topics discussed in the podcast (for example: a transgender panel discussion).
@@ -47,8 +49,6 @@ The following are the first-party taxonomies and terms.
 - [Music](music): the genre(s) of music covered in the podcast.
 
 - [Politics](politics): the political slant of the podcast.
-
-- [Race](race): used to denote the racial topics discussed in the podcast (for example: a black history documentary series).
 
 - [Religion](religion): used to denote the religion(s) discussed in the podcast (for example: a Christian music review podcast).
 
