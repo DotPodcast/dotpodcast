@@ -38,7 +38,7 @@ The following are the first-party taxonomies and terms.
 
 - [Country](country): the country or countries most relevant to the podcast (for example, a British Premier League football podcast would list "United Kingdom" as a country term).
 
-- [Format](format): the format of show (live show, documentary, etc).
+- [Format](format): the format of the podcast (live, documentary, etc).
 
 - [Gender](gender): used to denote the gender topics discussed in the podcast (for example: a transgender panel discussion).
 
