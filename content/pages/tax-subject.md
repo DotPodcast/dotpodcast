@@ -2,7 +2,7 @@ Title: Subject
 Slug: taxonomies/subject
 
 
-The subject matter discussed in the podcast
+The subject matter discussed in the podcast.
 
 ## [Art](#art)
 
