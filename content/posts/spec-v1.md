@@ -28,15 +28,15 @@ The DotPodcast JSON Feed spec is derived from the original [JSON Feed](https://j
 }
 ```
 
-### Why JSON and not RSS?
+## Why JSON and not RSS?
 
 XML (on which RSS is based) is slow and difficult to parse. New apps and services built around podcasting use it because it's what everyone uses, and moving people to another system is difficult, as the RSS spec (and its podcast-specific additions, provided by Apple) were built up over time.
 
 But since DotPodcast is making fundamental changes to the way the entire podcasting ecosystem operates, it makes sense to adopt a more easily-parsable and human-readable syntax. And so, JSON Feed.
 
-### Our JSON Feed extension
+## The DotPodcast JSON Feed extension
 
-Our spec adds an extension called `_dotpodcast` to the header section (before the `items` list) and the `items` list itself. For example:
+The DotPodcast spec adds an extension called `_dotpodcast` to the header section (before the `items` list) and the `items` list itself. For example:
 
 ```json
 {
@@ -83,7 +83,9 @@ Our spec adds an extension called `_dotpodcast` to the header section (before th
 }
 ```
 
-### The header object
+---
+
+## The header object
 
 The header `_dotpodcast` object is the one that appears before the list of items. It contains information about the podcast itself, that isn't covered by the JSON Feed spec.
 
