@@ -52,6 +52,8 @@ The following are the first-party taxonomies and terms.
 
 - [Politics](politics): the political slant of the podcast.
 
+- [Profanity](profanity): the level of profanity within the podcast.
+
 - [Religion](religion): used to denote the religion(s) discussed in the podcast (for example: a Christian music review podcast).
 
 - [Sexuality](sexuality): the sexuality or sexualities that are the focus of the podcast.
