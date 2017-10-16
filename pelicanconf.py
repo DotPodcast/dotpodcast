@@ -44,8 +44,13 @@ ARTICLE_SAVE_AS = '{slug}/index.html'
 # Theme-specific settings
 HEADER_COVER = 'images/header.jpg'
 MENUITEMS = (
-    ('Home', ''),
-    ('Blog', 'blog.html')
+    ('Home', '/'),
+    ('JSON Feed spec v1', '/spec-v1'),
+    ('Taxonomies', '/taxonomies'),
+    ('Building a hosting service', '/guides/hosting'),
+    ('Building a directory', '/guides/directories'),
+    ('Building a podcast app', '/guides/apps'),
+    ('Blog', '/blog.html')
 )
 
 DIRECT_TEMPLATES = ['blog']
