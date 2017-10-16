@@ -104,4 +104,22 @@ JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
     - `url` (optional, string) is the URL of a site owned by the publisher. When publishing multiple podcasts under the same publisher, it is important to keep the URL the same, as this will become the unique identifier for that publisher, and will enable directories to find other podcasts by the same publisher.
     - `logo` (optional, string) is the URL to a logo for the publisher. It should be square and relatively large — such as 512x512 — and should use transparency where appropriate, since it may be rendered on a non-white background.
 
-- `taxonomies` (optional but recommended, object) is a collection of taxonomy and term URI pairs that categorise the podcast. (See the [list of taxonomies](../taxonomies))
+- `taxonomy_terms` (optional but recommended, array) is a collection of taxonomy term URIs that categorise the podcast. (See the [list of taxonomies](../taxonomies)).
+
+- `description_html` (optional but recommended, string) is an HTML string that describes the podcast. It should be one or more paragraphs in length, optionally with links.
+
+- `description_text` (optional but recommended, string) is a plain-text description of the podcast, for use in rendering summary cards or where a podcast app doesn't want to - or can't - provide an HTML description.
+
+- `banner_image` (optional, string) is the URL of an image to use as a banner. Online directories will use this banner image when displaying the main landing page for a podcast. 1500x500 is the optional size for the image.
+
+### Why no language tag?
+
+The spoken language used in the podcast should be added as a taxonomy term, as it may not always be relevant ( music podcasts with no presenters may have no spoken language, and some podcasts may even use multiple languages).
+
+### Why no "explicit" tag?
+
+Instead of marking a show as containing "explicit" language or not, podcasters are encouraged to use a taxonomy term that denotes the level of profanity being used.
+
+---
+
+### The
