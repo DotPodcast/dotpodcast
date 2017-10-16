@@ -8,9 +8,9 @@ DotPodcast solves this problem by creating a pseudonymised subscription system, 
 
 The following is a comprehensive description of the system, from end to end. Guides are also available, with more domain-specific information for:
 
-- [podcast hosting service providers](hosting-services)
-- [podcast directory developers](directories)
-- [podcast player (or "podcatcher") developers](apps)
+- [podcast hosting providers](/guides/hosting)
+- [podcast directory developers](/guides/directories)
+- [podcast player (or "podcatcher") developers](/guides/apps)
 
 ## Generating a subscription token
 
