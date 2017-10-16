@@ -131,4 +131,49 @@ Instead of marking a show as containing "explicit" language or not, podcasters a
 
 ---
 
-### The
+## The item object
+
+Each episode in the feed is represented by an object within the `items` array. as with the header object, all the pre-existing JSON Feed specs apply.  The `_podcast` extension object inside an item object can contain the following:
+
+- `season_number` (optional, integer) is the season number of the podcast, if applicable. If not, the value should be omitted.
+
+- `episode_number` (optional, integer) is the number of the episode within the season. If the podcast is not season-based, this value, along with `season_number` should be omitted.
+
+- `subtitle` (optional, string) is a short sentence that describes the episode.
+
+- `content_audio` (required if `content_video` is not supplied, object) describes the audio content file type and location:
+    - `mime_type` (required, string) is the MIME type of the audio file (for example: `audio/mpeg`)
+    - `url` (required, string) is the URL for the episode media file (known in RSS as the "enclosure")
+    - `file_size` (required, integer) is the size, in bytes, of the file
+    - `duration` (required, integer) is the duration (in total number of seconds) of the file
+
+- `content_video` (required if `content_audio` is not supplied, object) describes the video content file type and location:
+    - `mime_type` (required, string) is the MIME type of the video file (for example: `video/mpeg`)
+    - `url` (required, string) is the URL for the episode media file (known in RSS as the "enclosure")
+    - `file_size` (required, integer) is the size, in bytes, of the file
+    - `duration` (required, integer) is the duration (in total number of seconds) of the file
+
+- `restricted_content` (very optional, array) is a list of objects that describe extended or otherwise altered versions of the same audio/video content, but restricted. For example, an ad-free or extended version of a show might be supplied for those that pay via Bitcoin. Each object in the array can contain:
+    - `id` (required, string): a unique identifier for the piece of restricted content. It must be an ID not used anywhere else in the podcast, but could be a URL that resolves to a paywall page on the Web.
+    - `name` (required, string): the name of the content package being offered, eg: "Premium", "Ad-free" or "Includes pre- and post-show"
+    - `price` (required, positive integer): the price in satoshi for the content
+    - `bitcoin_address` (required, string): the address of the Bitcoin wallet that will receive payment for the content
+    - `content_audio` and/or `content_video` (at least one required, object) conforms to the `content_audio` and `content_video` specs above and describes the files the user will be able to download once payment has been confirmed.
+    - `kind` (required, string): the behaviour of the content. Can be one of:
+        - `primary`: this content replaces the main, unrestricted content rather than adds to it
+        - `bonus`: this is bonus content that can be listened to before or after the main content
+- `taxonomy_terms` (very optional, array) is a collection of taxonomy term URIs that categorise the episode. These are considered supplementary to the podcast's global taxonomy terms, so are useful for a one-off episode exploring a particular topic, or a film podcast that reviews a different film each week.
+
+### Content URLs
+
+It's common for podcast hosting providers to use tracking URLs in feeds, so that listener numbers can be tracked. Historically there has been no way to tie a download to a specific subscription. Part of the DotPodcast spec solves this problem via subscription tokens.
+
+Rather than providing a direct URL to the audio/video content, or a tracking URL, podcast hosting providers must specify the URL to a thin API endpoint that exchanges a subscription token for an episode. Subscription tokens are generated when a listener subscribes to a podcast, and should be stored securely within the podcast app and in the hosting service's database. See [Requesting content](../requesting-content).
+
+### Restricted content
+
+Use of the term "premium" or "paid" is avoided above, but essentially this part of the spec enables content creators to charge for their work. Currently the spec does not provide an option for entire feeds to be restricted. Instead, podcasters should consider adding extra value to their free content, by providing bonus material, or content that removes advertisements.
+
+### Why separate audio and video objects?
+
+Some podcasts exist in both audio and video form. Podcasts that are recorded live via services like Google Hangouts or Twitch are often provided as podcasts. This enables listeners or viewers to subscribe to one podcast, but choose (at the time of subscription) in which format to receive the programme.
