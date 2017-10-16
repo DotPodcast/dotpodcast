@@ -46,6 +46,8 @@ The following are the first-party taxonomies and terms.
 
 - [Humor](humor): the style(s) of humour employed in the podcast.
 
+- [Language](language): the spoken language of the podcast.
+
 - [Music](music): the genre(s) of music covered in the podcast.
 
 - [Politics](politics): the political slant of the podcast.
