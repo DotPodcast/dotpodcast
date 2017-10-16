@@ -92,6 +92,8 @@ The header `_dotpodcast` object is the one that appears before the list of items
 - `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec, not the
 JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
 
+- `subscription_url` (required, string) is the URL to the subscription endpoint, which is used to generate a subscription token that can be exchanged when downloading episodes. See [Subscription tokens](../subscription-tokens) for more information.
+
 - `feed_title` (optional, string) is the title of the feed as it should appear in a podcast app or directory. This may be different from the name of the JSON Feed itself.
 
 - `artwork` (optional but highly recommended, object) specifies the podcast cover artwork at varying sizes:
