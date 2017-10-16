@@ -87,7 +87,7 @@ The DotPodcast spec adds an extension called `_dotpodcast` to the header section
 
 ## The header object
 
-The header `_dotpodcast` object is the one that appears before the list of items. It contains information about the podcast itself, that isn't covered by the JSON Feed spec.
+The header `_dotpodcast` object is the one that appears before the list of items. It contains information about the podcast itself, that isn't covered by the JSON Feed spec. The `_podcast` extension object can contain the following:
 
 - `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec, not the
 JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
@@ -113,6 +113,11 @@ JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
 - `description_text` (optional but recommended, string) is a plain-text description of the podcast, for use in rendering summary cards or where a podcast app doesn't want to - or can't - provide an HTML description.
 
 - `banner_image` (optional, string) is the URL of an image to use as a banner. Online directories will use this banner image when displaying the main landing page for a podcast. 1500x500 is the optional size for the image.
+
+- `hosts` (optional, array) is an array of objects containing information about the podcast's host(s). It should contain
+    - `name` (string): the full name of the host.
+    - `uri` (string): a unique identifying address for the host (like their website or [Onename](https://onename.com/) profile page). It must be something that can identify the host across multiple podcasts running on multiple hosting services or provided via multiple networks, so must not be a page hosted by a particular podcast. It should be a URL that is not likely to change.
+    - `avatar` (string): the URL to an avatar image. This should be around 512x512, square and with no transparency or masks (ie: it should not be an image in a circle). This image does not have to be unique across podcasts or services.
 
 ### Why no language tag?
 
