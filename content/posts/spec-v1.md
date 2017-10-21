@@ -164,6 +164,10 @@ Each episode in the feed is represented by an object within the `items` array. a
         - `bonus`: this is bonus content that can be listened to before or after the main content
 - `taxonomy_terms` (very optional, array) is a collection of taxonomy term URIs that categorise the episode. These are considered supplementary to the podcast's global taxonomy terms, so are useful for a one-off episode exploring a particular topic, or a film podcast that reviews a different film each week.
 
+### Why no `attachments`?
+
+The DotPodcast JSON Feed spec does not include the `attachments` array, as the podcast spec requires more information, and adding an extra `_dotpodcast` extension to each attachment object would reduce readability of the feed.
+
 ### Content URLs
 
 It's common for podcast hosting providers to use tracking URLs in feeds, so that listener numbers can be tracked. Historically there has been no way to tie a download to a specific subscription. Part of the DotPodcast spec solves this problem via subscription tokens.
