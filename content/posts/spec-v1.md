@@ -117,9 +117,9 @@ JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
 - `banner_image` (optional, string) is the URL of an image to use as a banner. Online directories will use this banner image when displaying the main landing page for a podcast. 1500x500 is the optional size for the image.
 
 - `hosts` (optional, array) is an array of objects containing information about the podcast's host(s). It should contain
-    - `name` (string): the full name of the host.
-    - `uri` (string): a unique identifying address for the host (like their website or [Onename](https://onename.com/) profile page). It must be something that can identify the host across multiple podcasts running on multiple hosting services or provided via multiple networks, so must not be a page hosted by a particular podcast. It should be a URL that is not likely to change.
-    - `avatar` (string): the URL to an avatar image. This should be around 512x512, square and with no transparency or masks (ie: it should not be an image in a circle). This image does not have to be unique across podcasts or services.
+    - `name` (required, string): the full name of the host.
+    - `uri` (required, string): a unique identifying address for the host (like their website or [Onename](https://onename.com/) profile page). It must be something that can identify the host across multiple podcasts running on multiple hosting services or provided via multiple networks, so must not be a page hosted by a particular podcast. It should be a URL that is not likely to change.
+    - `avatar` (optional, string): the URL to an avatar image. This should be around 512x512, square and with no transparency or masks (ie: it should not be an image in a circle). This image does not have to be unique across podcasts or services.
 
 ### Why no language tag?
 
