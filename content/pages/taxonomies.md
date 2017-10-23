@@ -34,6 +34,10 @@ However, if a podcast covers more broader topics around Art, the "Art" term can 
 
 The following are the first-party taxonomies and terms.
 
+- [**Language**](language) \*: the spoken language of the podcast.
+
+- [**Profanity**](profanity) \*: the level of profanity within the podcast.
+
 - [Age range](age): the suitable age range(s) for the podcast.
 
 - [Country](country): the country or countries most relevant to the podcast (for example, a British Premier League football podcast would list "United Kingdom" as a country term).
@@ -46,19 +50,19 @@ The following are the first-party taxonomies and terms.
 
 - [Humor](humor): the style(s) of humour employed in the podcast.
 
-- [Language](language): the spoken language of the podcast.
-
 - [Music](music): the genre(s) of music covered in the podcast.
 
 - [Politics](politics): the political slant of the podcast.
-
-- [Profanity](profanity): the level of profanity within the podcast.
 
 - [Religion](religion): used to denote the religion(s) discussed in the podcast (for example: a Christian music review podcast).
 
 - [Sexuality](sexuality): the sexuality or sexualities that are the focus of the podcast.
 
 - [Subject](subject): the subject matters discussed in the podcast.
+
+## Required taxonomies
+
+Taxonomies marked with an asterisk (\*) are considered "required taxonomies", and tools validating JSON feeds should check to ensure one of the corresponding taxonomy terms is listed (one or more term from each taxonomy is required).
 
 ## Third-party taxonomies and terms
 
