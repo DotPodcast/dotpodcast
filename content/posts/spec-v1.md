@@ -45,6 +45,7 @@ The DotPodcast spec adds an extension called `_dotpodcast` to the header section
     "home_page_url": "https://example.org/",
     "feed_url": "https://example.org/feed.json",
     "_dotpodcast": {
+        "about": "DotPodcast-specific information about the feed",
         "hosts": [
             {
                 "name": "Geoff",
@@ -74,6 +75,7 @@ The DotPodcast spec adds an extension called `_dotpodcast` to the header section
             "content_html": "<p>Hello, world!</p>",
             "url": "https://example.org/initial-post",
             "_dotpodcast": {
+                "about": "DotPodcast-specific information about the episode",
                 "hosts": [
                     "htto://example.com/hosts/geoff"
                 ]
