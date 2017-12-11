@@ -115,6 +115,7 @@ The body feed is a JSON-formatted array of episodes. An example feed looks like 
 ```json
 {
     "meta": {
+        "version": "https://dotpodcast.co/spec-v1",
         "next_url": "https://example.com/items.json?page=2",
         "previous_url": null,
         "total_count": 30,
@@ -139,7 +140,11 @@ The body feed is a JSON-formatted array of episodes. An example feed looks like 
 
 ### The `meta` object
 
-The `meta` object contains information about the returned data, and a simple way to retrieve the next set of items. The hosting provider may choose to paginate results, delivering, say, 10 results per page. In this case, the `next_url` property should contain a full URL to the next set of 10 results. If the second page of results is being returned, `previous_url` should point to the previous page.
+The `meta` object contains information about the returned data, and a simple way to retrieve the next set of items.
+
+The `version` property is required, and should be the URL of the version of the format the feed uses. It should be the same as that specified in the header file.
+
+The hosting provider may choose to paginate results, delivering, say, 10 results per page. In this case, the `next_url` property should contain a full URL to the next set of 10 results. If the second page of results is being returned, `previous_url` should point to the previous page.
 
 `total_count` should return the total number of episodes available in the feed, and `per_page` should return the number of episodes in this current paginated list.
 
