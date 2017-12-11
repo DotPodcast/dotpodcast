@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>DotPodcast feed specification v1</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="https://dotpodcast.github.io/dotpodcast" rel="canonical" />
+
+  <!-- Feed -->
+        <link href="https://dotpodcast.github.io/dotpodcast/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="DotPodcast Full Atom Feed" />
+          <link href="https://dotpodcast.github.io/dotpodcast/feeds/posts.atom.xml" type="application/atom+xml" rel="alternate" title="DotPodcast Categories Atom Feed" />
+
+  <link href="https://dotpodcast.github.io/dotpodcast/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="https://dotpodcast.github.io/dotpodcast/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kenia" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="https://dotpodcast.github.io/dotpodcast/spec-v1" rel="canonical" />
+
+        <meta name="description" content="Version 1 of the DotPodcast feed spec">
+
+        <meta name="author" content="Mark">
+
+
+        <meta property="og:locale" content="" />
+    <meta property="og:site_name" content="DotPodcast" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DotPodcast" />
+    <meta property="og:description" content="View the blog." />
+    <meta property="og:url" content="https://dotpodcast.github.io/dotpodcast" />
+      <meta property="og:image" content="https://dotpodcast.github.io/dotpodcast/images/header.jpg" />
+
+  <meta property="og:type" content="article">
+            <meta property="article:author" content="https://dotpodcast.github.io/dotpodcast/author/mark.html">
+  <meta property="og:url" content="https://dotpodcast.github.io/dotpodcast/spec-v1">
+  <meta property="og:title" content="DotPodcast feed specification v1">
+  <meta property="article:published_time" content="2017-10-12 00:00:00-05:00">
+            <meta property="og:description" content="Version 1 of the DotPodcast feed spec">
+
+            <meta property="og:image" content="https://dotpodcast.github.io/dotpodcast/images/header.jpg">
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/spec-v1" role="presentation">Feed spec v1</a></li>
+          <li><a href="/taxonomies" role="presentation">Taxonomies</a></li>
+          <li><a href="/guides/hosting" role="presentation">Building a hosting service</a></li>
+          <li><a href="/guides/directories" role="presentation">Building a directory</a></li>
+          <li><a href="/guides/apps" role="presentation">Building a podcast app</a></li>
+          <li><a href="/blog.html" role="presentation">Blog</a></li>
+
+
+    </ul>
+  </div>
+</nav>
+    <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://dotpodcast.github.io/dotpodcast" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">DotPodcast feed specification v1</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://dotpodcast.github.io/dotpodcast/author/mark.html">Mark</a>
+            | <time datetime="Thu 12 October 2017">Thu 12 October 2017</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://dotpodcast.github.io/dotpodcast/images/header.jpg')">
+      </div>
+    </header>
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>The DotPodcast feed spec is inspired by the original <a href="https://jsonfeed.org/">JSON Feed</a> spec, but diverges significantly in that it requires two files: a header and a body.</p>
+<h2 id="the-header-file-and-the-body-feed">The header file and the body feed</h2>
+<p>The header file is a JSON file that represents important information about the podcast. The URL to this meta file is hashed, and that hash is stored on the blockchain. The body feed contains a list of all the published episodes of the podcast.</p>
+<p>The split is necessary because the header file does not change frequently, meaning the hash of that file also changes rarely. Changes to this kind of information take a while to propagate through the blockchain, so it would be impractical to continually push new updates to the chain upon publication of a new episode, or change to an existing episode.</p>
+<h2 id="why-json-and-not-rss">Why JSON and not RSS?</h2>
+<p>XML (on which RSS is based) is slow and difficult to parse. New apps and services built around podcasting use it because it's what everyone uses, and moving people to another system is difficult, as the RSS spec (and its podcast-specific additions, provided by Apple) were built up over time.</p>
+<p>But since DotPodcast is making fundamental changes to the way the entire podcasting ecosystem operates, it makes sense to adopt a more easily-parsable and human-readable syntax. And so, the spec is derived from JSON Feed.</p>
+<hr>
+<h2 id="the-header-file"><a href="#the-header-file">The header file</a></h2>
+<p>The header file contains information about the podcast itself, in JSON format. An example header file looks like this:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;https://dotpodcast.co/spec-v1&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;My Podcast&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;home_page_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;meta_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/meta.json&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;items_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/items.json&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;subscription_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/subscribe/&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;about&quot;</span><span class="p">:</span> <span class="s2">&quot;DotPodcast feed&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hosts&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Geoff&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;htto://example.com/hosts/geoff&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;avatar&quot;</span><span class="p">:</span> <span class="s2">&quot;htto://example.com/hosts/geoff.jpg&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Sally&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;uri&quot;</span><span class="p">:</span> <span class="s2">&quot;htto://example.com/hosts/sally&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;avatar&quot;</span><span class="p">:</span> <span class="s2">&quot;htto://example.com/hosts/sally.jpg&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>The object contains the following:</p>
+<ul>
+<li>
+<p><code>version</code> (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec. Example: <em>http://dotpodcast.org/spec-v1</em>.</p>
+</li>
+<li>
+<p><code>title</code> (required, string) is the name of the podcast.</p>
+</li>
+<li>
+<p><code>home_page_url</code> (required, string) is the URL to the podcast's website.</p>
+</li>
+<li>
+<p><code>meta_url</code> (required, string) is the URL to this header file.</p>
+</li>
+<li>
+<p><code>items_url</code> (required, string) is the URL to the <a href="#the-body-feed">body feed</a>.</p>
+</li>
+<li>
+<p><code>subscription_url</code> (required, string) is the URL to the subscription endpoint, which is used to generate a subscription token that can be exchanged when downloading episodes. See <a href="../subscription-tokens">Subscription tokens</a> for more information.</p>
+</li>
+<li>
+<p><code>author</code> (optional, object) specifies the podcast author. The author object has several members. These are all optional, but if you provide an author object, then at least one is required:</p>
+</li>
+<li>
+<p><code>name</code> (optional, string) is the author’s name.</p>
+</li>
+<li>
+<p><code>url</code> (optional, string) is the URL of a site owned by the author. It could be a blog, microblog, Twitter account, and so on. Ideally the linked-to page provides a way to contact the author, but that’s not required.</p>
+</li>
+<li>
+<p><code>avatar</code> (optional, string) is the URL for an image for the author. It should be square and relatively large — such as 512x512 — and should use transparency where appropriate, since it may be rendered on a non-white background.</p>
+</li>
+<li>
+<p><code>artwork</code> (optional but highly recommended, object) specifies the podcast cover artwork at varying sizes:</p>
+<ul>
+<li><code>@1x</code> (required, string) is the URL to a 1400x1400 image.</li>
+<li><code>@2x</code> (required, string) is the URL to a 2800x2800 image.</li>
+<li>Any other sizes can be added here, that may be supported by third-party directories such as Apple Podcasts.</li>
+</ul>
+</li>
+<li>
+<p><code>expired</code> (optional, boolean) says whether or not the podcast is finished (that is, whether or not it will ever update again). If the value is <code>true</code>, then it’s expired. Any other value, or the absence of <code>expired</code>, means the feed may continue to update.</p>
+</li>
+<li>
+<p><code>subtitle</code> (optional but recommended, string) is a short sentence that describes the podcast. For example, a podcast title might be "Beware of the Leopard", with a subtitle of "The Hitchhiker's Guide to the Galaxy podcast".</p>
+</li>
+<li>
+<p><code>publisher</code> (optional, object) specifies information about the publisher of theh podcast (for example, NPR or Gimlet Media):</p>
+<ul>
+<li><code>name</code> (optional, string) is the publisher's name.</li>
+<li><code>url</code> (optional, string) is the URL of a site owned by the publisher. When publishing multiple podcasts under the same publisher, it is important to keep the URL the same, as this will become the unique identifier for that publisher, and will enable directories to find other podcasts by the same publisher.</li>
+<li><code>logo</code> (optional, string) is the URL to a logo for the publisher. It should be square and relatively large — such as 512x512 — and should use transparency where appropriate, since it may be rendered on a non-white background.</li>
+</ul>
+</li>
+<li>
+<p><code>taxonomy_terms</code> (optional but recommended, array) is a collection of taxonomy term URIs that categorise the podcast. (See the <a href="../taxonomies">list of taxonomies</a>).</p>
+</li>
+<li>
+<p><code>description_html</code> (optional but recommended, string) is an HTML string that describes the podcast. It should be one or more paragraphs in length, optionally with links.</p>
+</li>
+<li>
+<p><code>description_text</code> (optional but recommended, string) is a plain-text description of the podcast, for use in rendering summary cards or where a podcast app doesn't want to - or can't - provide an HTML description.</p>
+</li>
+<li>
+<p><code>banner_image</code> (optional, string) is the URL of an image to use as a banner. Online directories will use this banner image when displaying the main landing page for a podcast. 1500x500 is the optional size for the image.</p>
+</li>
+<li>
+<p><code>hosts</code> (optional, array) is an array of objects containing information about the podcast's host(s). It should contain</p>
+<ul>
+<li><code>name</code> (required, string): the full name of the host.</li>
+<li><code>uri</code> (required, string): a unique identifying address for the host (like their website or <a href="https://onename.com/">Onename</a> profile page). It must be something that can identify the host across multiple podcasts running on multiple hosting services or provided via multiple networks, so must not be a page hosted by a particular podcast. It should be a URL that is not likely to change.</li>
+<li><code>avatar</code> (optional, string): the URL to an avatar image. This should be around 512x512, square and with no transparency or masks (ie: it should not be an image in a circle). This image does not have to be unique across podcasts or services.</li>
+</ul>
+</li>
+</ul>
+<h3 id="why-no-language-tag">Why no language tag?</h3>
+<p>The spoken language used in the podcast should be added as a taxonomy term, as it may not always be relevant ( music podcasts with no presenters may have no spoken language, and some podcasts may even use multiple languages).</p>
+<h3 id="why-no-explicit-tag">Why no "explicit" tag?</h3>
+<p>Instead of marking a show as containing "explicit" language or not, podcasters are encouraged to use a taxonomy term that denotes the level of profanity being used.</p>
+<hr>
+<h2 id="the-body-feed"><a href="#the-body-feed">The body feed</a></h2>
+<p>The body feed is a JSON-formatted array of episodes. An example feed looks like this:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;next_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/items.json?page=2&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;previous_url&quot;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+        <span class="nt">&quot;total_count&quot;</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="nt">&quot;per_page&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;items&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Episode one&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/1/&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;content_audio&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">&quot;mime_type&quot;</span><span class="p">:</span> <span class="s2">&quot;audio/mpeg&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://example.com/1/download/&quot;</span><span class="p">,</span>
+                <span class="nt">&quot;file_size&quot;</span><span class="p">:</span> <span class="mi">28800000</span>
+            <span class="p">},</span>
+            <span class="nt">&quot;content_text&quot;</span><span class="p">:</span> <span class="s2">&quot;This is the first episode.&quot;</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="err">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3 id="the-meta-object">The <code>meta</code> object</h3>
+<p>The <code>meta</code> object contains information about the returned data, and a simple way to retrieve the next set of items. The hosting provider may choose to paginate results, delivering, say, 10 results per page. In this case, the <code>next_url</code> property should contain a full URL to the next set of 10 results. If the second page of results is being returned, <code>previous_url</code> should point to the previous page.</p>
+<p><code>total_count</code> should return the total number of episodes available in the feed, and <code>per_page</code> should return the number of episodes in this current paginated list.</p>
+<h3 id="the-items-object">The <code>items</code> object</h3>
+<p>This should be an array of published episodes. An item object contains:</p>
+<ul>
+<li>
+<p><code>id</code> (required, string) is unique for that episode. If an episode is ever updated, the ID should be unchanged. New episodes should never use a previously-used ID. If an ID is presented as a number or other type, a podcast app or directory service must coerce it to a string. Ideally, the ID is the full URL of the episode's web page (not the episode audio or video content), since URLs make great unique identifiers.</p>
+</li>
+<li>
+<p><code>url</code> (optional, string) is the URL of the episode. It’s the permalink. This may be the same as the ID, but should be present regardless.</p>
+</li>
+<li>
+<p><code>title</code> (optional, string) is the plain text episode title.</p>
+</li>
+<li>
+<p><code>summary</code> (optional, string) is a plain text sentence or two describing the episode.</p>
+</li>
+<li>
+<p><code>season_number</code> (optional, integer) is the season number of the podcast, if applicable. If not, the value should be omitted.</p>
+</li>
+<li>
+<p><code>episode_number</code> (optional, integer) is the number of the episode within the season. If the podcast is not season-based, this value, along with <code>season_number</code> should be omitted.</p>
+</li>
+<li>
+<p><code>subtitle</code> (optional, string) is a short sentence that describes the episode.</p>
+</li>
+<li>
+<p><code>content_html</code> and <code>content_text</code> are each optional strings, but one or both must be present. This is the HTML or plain text of the item. Important: the only place HTML is allowed in this format is in <code>content_html</code>.</p>
+</li>
+<li>
+<p><code>content_audio</code> (required if <code>content_video</code> is not supplied, object) describes the audio content file type and location:</p>
+<ul>
+<li><code>mime_type</code> (required, string) is the MIME type of the audio file (for example: <code>audio/mpeg</code>)</li>
+<li><code>url</code> (required, string) is the URL for the episode media file (known in RSS as the "enclosure")</li>
+<li><code>file_size</code> (required, integer) is the size, in bytes, of the file</li>
+<li><code>duration</code> (required, integer) is the duration (in total number of seconds) of the file</li>
+</ul>
+</li>
+<li>
+<p><code>content_video</code> (required if <code>content_audio</code> is not supplied, object) describes the video content file type and location:</p>
+<ul>
+<li><code>mime_type</code> (required, string) is the MIME type of the video file (for example: <code>video/mpeg</code>)</li>
+<li><code>url</code> (required, string) is the URL for the episode media file (known in RSS as the "enclosure")</li>
+<li><code>file_size</code> (required, integer) is the size, in bytes, of the file</li>
+<li><code>duration</code> (required, integer) is the duration (in total number of seconds) of the file</li>
+</ul>
+</li>
+<li>
+<p><code>restricted_content</code> (very optional, array) is a list of objects that describe extended or otherwise altered versions of the same audio/video content, but restricted. For example, an ad-free or extended version of a show might be supplied for those that pay via Bitcoin. Each object in the array can contain:</p>
+<ul>
+<li><code>id</code> (required, string): a unique identifier for the piece of restricted content. It must be an ID not used anywhere else in the podcast, but could be a URL that resolves to a paywall page on the Web.</li>
+<li><code>name</code> (required, string): the name of the content package being offered, eg: "Premium", "Ad-free" or "Includes pre- and post-show"</li>
+<li><code>price</code> (required, positive integer): the price in satoshi for the content</li>
+<li><code>bitcoin_address</code> (required, string): the address of the Bitcoin wallet that will receive payment for the content</li>
+<li><code>content_audio</code> and/or <code>content_video</code> (at least one required, object) conforms to the <code>content_audio</code> and <code>content_video</code> specs above and describes the files the user will be able to download once payment has been confirmed.</li>
+<li><code>kind</code> (required, string): the behaviour of the content. Can be one of:<ul>
+<li><code>primary</code>: this content replaces the main, unrestricted content rather than adds to it</li>
+<li><code>bonus</code>: this is bonus content that can be listened to before or after the main content</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>taxonomy_terms</code> (very optional, array) is a collection of taxonomy term URIs that categorise the episode. These are considered supplementary to the podcast's global taxonomy terms, so are useful for a one-off episode exploring a particular topic, or a film podcast that reviews a different film each week.</li>
+</ul>
+<h3 id="content-urls">Content URLs</h3>
+<p>It's common for podcast hosting providers to use tracking URLs in feeds, so that listener numbers can be tracked. Historically there has been no way to tie a download to a specific subscription. Part of the DotPodcast spec solves this problem via subscription tokens.</p>
+<p>Rather than providing a direct URL to the audio/video content, or a tracking URL, podcast hosting providers must specify the URL to a thin API endpoint that exchanges a subscription token for an episode. Subscription tokens are generated when a listener subscribes to a podcast, and should be stored securely within the podcast app and in the hosting service's database. See <a href="../requesting-content">Requesting content</a>.</p>
+<h3 id="restricted-content">Restricted content</h3>
+<p>Use of the term "premium" or "paid" is avoided above, but essentially this part of the spec enables content creators to charge for their work. Currently the spec does not provide an option for entire feeds to be restricted. Instead, podcasters should consider adding extra value to their free content, by providing bonus material, or content that removes advertisements.</p>
+<h3 id="why-separate-audio-and-video-objects">Why separate audio and video objects?</h3>
+<p>Some podcasts exist in both audio and video form. Podcasts that are recorded live via services like Google Hangouts or Twitch are often provided as podcasts. This enables listeners or viewers to subscribe to one podcast, but choose (at the time of subscription) in which format to receive the programme.</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=DotPodcast feed specification v1&amp;url=https://dotpodcast.github.io/dotpodcast/spec-v1" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://dotpodcast.github.io/dotpodcast/spec-v1" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://dotpodcast.github.io/dotpodcast/spec-v1" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+                        <figure class="post-author-avatar">
+                            <img src="https://dotpodcast.github.io/dotpodcast/images/mark-avatar.jpg" alt="Mark" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://dotpodcast.github.io/dotpodcast/author/mark.html">Mark steadman</a></h4>
+                            <p class="post-author-about">Mark runs the Podiant podcast hosting service, and co-authors the feed spec at DotPodcast</p>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Birmingham, UK</span>
+                            <span class="post-author-website"><a href="https://steadman.io/"><i class="ic ic-link"></i> Website</a></span>
+                            <span class="post-author-twitter"><a target="_blank" href="https://twitter.com/iamsteadman"><i class="ic ic-twitter"></i> Twitter</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script type="text/javascript" src="https://dotpodcast.github.io/dotpodcast/theme/js/script.js"></script>
+
+</body>
+</html>

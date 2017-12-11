@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+  <title>Taxonomies</title>
+
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="origin" />
+  <meta name="generator" content="Pelican" />
+  <link href="https://dotpodcast.github.io/dotpodcast" rel="canonical" />
+
+  <!-- Feed -->
+        <link href="https://dotpodcast.github.io/dotpodcast/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="DotPodcast Full Atom Feed" />
+
+  <link href="https://dotpodcast.github.io/dotpodcast/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+  <!-- Code highlight color scheme -->
+      <link href="https://dotpodcast.github.io/dotpodcast/theme/css/code_blocks/github.css" rel="stylesheet">
+
+
+  <!-- Custom fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Kenia" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+      <meta property="og:locale" content="" />
+    <meta property="og:site_name" content="DotPodcast" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="DotPodcast" />
+    <meta property="og:description" content="View the blog." />
+    <meta property="og:url" content="https://dotpodcast.github.io/dotpodcast" />
+      <meta property="og:image" content="https://dotpodcast.github.io/dotpodcast/images/header.jpg" />
+</head>
+<!-- TODO : Body class -->
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/" role="presentation">Home</a></li>
+          <li><a href="/spec-v1" role="presentation">Feed spec v1</a></li>
+          <li><a href="/taxonomies" role="presentation">Taxonomies</a></li>
+          <li><a href="/guides/hosting" role="presentation">Building a hosting service</a></li>
+          <li><a href="/guides/directories" role="presentation">Building a directory</a></li>
+          <li><a href="/guides/apps" role="presentation">Building a podcast app</a></li>
+          <li><a href="/blog.html" role="presentation">Blog</a></li>
+
+
+    </ul>
+  </div>
+</nav>
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://dotpodcast.github.io/dotpodcast" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Taxonomies</h1>      
+            <div class="post-cover cover" style="background-image: url('images/header.jpg')">            
+        
+      </div>
+    </header>    
+
+  <section id="wrapper">
+    <a class="hidden-close"></a>
+  <!-- Post content -->
+  <main class="content" role="main">
+      <article class="post">
+      <div class="inner">
+          <section class="post-content">
+              <p>Taxonomies are groups of terms, that can be used to categorise something. For example, WordPress has two key taxonomies: Category and Tag.</p>
+<p>Categories are hierarchical terms which should come from a fairly small list: for example: "Nature" and "Art".</p>
+<p>Tags can be any keyword or phrase that may be used to link articles together. They don't have any relation to categories and can be pulled from a wider array of terms, like "dogs", "poker" and "painting".</p>
+<p>Traditional podcast feeds use categories that are set out by Apple. Similarly, the DotPodcast spec has a list of categories and subcategories, but allows for more mixing and matching. For example, a music review podcast will pick one or more terms from the Music taxonomy and one or more terms from the Speech taxonomy, while a podcast that <em>just</em> plays music may omit the Speech taxonomy terms.</p>
+<p>Taxonomies are specified by URI rather than by name, to avoid internationalisation problems, misspellings, differences in house style ("scifi" vs "sci-fi" vs "science fiction" etc).</p>
+<h2 id="using-taxonomies-and-terms">Using taxonomies and terms</h2>
+<p>All taxonomies are optional, and podcasters should be able to choose one or more taxonomies, and pick from one or more terms within each taxonomy.</p>
+<p>Taxonomies are intended to make it easier for listeners to find relevant content, not to exclude listeners or provide any kind of demographical information. The intent is to promote inclusion and open dialogue, with the ability to help listeners find voices that match their own.</p>
+<h2 id="adding-taxonomies-and-terms">Adding taxonomies and terms</h2>
+<p>Adding and amending taxonomies and terms should be an open and democratic process. That process begins with a pull request on our <a href="https://github.com/dotpodcast/dotpodcast/">GitHub repository</a>, which makes the suggested changes and explains (via commit message) and suggests why these changes are necessary.</p>
+<p>Guides on how to contribute will be released in time.</p>
+<h2 id="term-nesting">Term nesting</h2>
+<p>Terms are hierarchical. For example "Art" is a top-level term, with "Fashion" being a sub-term. When specifying the terms applicable to a podcast, it's not necessary to specify both terms; only the lowest-level term (in this case "Fashion") needs to be selected.</p>
+<p>However, if a podcast covers more broader topics around Art, the "Art" term can be selected, and should be considered to cover the subject broadly.</p>
+<h2 id="first-party-taxonomies-and-terms">First-party taxonomies and terms</h2>
+<p>The following are the first-party taxonomies and terms.</p>
+<ul>
+<li>
+<p><a href="language"><strong>Language</strong></a> *: the spoken language of the podcast.</p>
+</li>
+<li>
+<p><a href="profanity"><strong>Profanity</strong></a> *: the level of profanity within the podcast.</p>
+</li>
+<li>
+<p><a href="age">Age range</a>: the suitable age range(s) for the podcast.</p>
+</li>
+<li>
+<p><a href="country">Country</a>: the country or countries most relevant to the podcast (for example, a British Premier League football podcast would list "United Kingdom" as a country term).</p>
+</li>
+<li>
+<p><a href="ethnicity">Ethnicity</a>: used to denote the ethnical topics discussed in the podcast (for example: a black history documentary series).</p>
+</li>
+<li>
+<p><a href="format">Format</a>: the format of the podcast (live, documentary, etc).</p>
+</li>
+<li>
+<p><a href="gender">Gender</a>: used to denote the gender topics discussed in the podcast (for example: a transgender panel discussion).</p>
+</li>
+<li>
+<p><a href="humor">Humor</a>: the style(s) of humour employed in the podcast.</p>
+</li>
+<li>
+<p><a href="music">Music</a>: the genre(s) of music covered in the podcast.</p>
+</li>
+<li>
+<p><a href="politics">Politics</a>: the political slant of the podcast.</p>
+</li>
+<li>
+<p><a href="religion">Religion</a>: used to denote the religion(s) discussed in the podcast (for example: a Christian music review podcast).</p>
+</li>
+<li>
+<p><a href="sexuality">Sexuality</a>: the sexuality or sexualities that are the focus of the podcast.</p>
+</li>
+<li>
+<p><a href="subject">Subject</a>: the subject matters discussed in the podcast.</p>
+</li>
+</ul>
+<h2 id="required-taxonomies">Required taxonomies</h2>
+<p>Taxonomies marked with an asterisk (*) are considered "required taxonomies", and tools validating feeds should check to ensure one of the corresponding taxonomy terms is listed (one or more term from each taxonomy is required).</p>
+<h2 id="third-party-taxonomies-and-terms">Third-party taxonomies and terms</h2>
+<p>Although we recommend using the taxonomies laid out in this documentation, using other taxonomy URIs (as long point to pages that exist and explain the taxonomy) is perfectly fine.</p>
+<p>One use for third-party taxonomies and terms is for TV shows, films and other pieces of pop culture. This allows deep categorisation of podcast subject matter (allowing listeners to find all the <em>Game of Thrones</em> podcasts easily, for example) without the need for constant updates to the core spec.</p>
+<p>A list of recognised third-party taxonomies and terms will appear below in time.</p>
+          </section>
+      </div>
+      </article>
+  </main>
+      <!-- TODO : Body class -->
+    <div id="body-class" style="display: none;" class=""></div>
+
+    <footer id="footer">
+      <div class="inner">
+        <section class="credits">
+          <span class="credits-theme">Theme <a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a></span>
+          <span class="credits-software">Published with <a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a></span>
+        </section>
+      </div>
+    </footer>
+  </section>
+
+  <script type="text/javascript" src="https://dotpodcast.github.io/dotpodcast/theme/js/script.js"></script>
+
+</body>
+</html>
