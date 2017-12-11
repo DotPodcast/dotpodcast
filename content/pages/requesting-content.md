@@ -4,7 +4,7 @@ Slug: requesting-content
 
 When a [subscription token](../subscription-tokens) has been obtained by an app or directory service for a specific podcast, it can be used to request the audio/video content of a podcast feed.
 
-The `content_audio` or `content_video` objects within a JSON feed provide a thin API endpoint that allows content to be securely redeemed.
+The `content_audio` or `content_video` objects within a feed provide a thin API endpoint that allows content to be securely redeemed.
 
 There are four main types of content request:
 
@@ -28,7 +28,7 @@ A podcast directory or app uses preview requests to swap a preview token for a U
 }
 ```
 
-The `sub` value must be set to `"preview"`, and the `content_id` must point to the ID of the episode as set out in the JSON Feed item.
+The `sub` value must be set to `"preview"`, and the `content_id` must point to the ID of the episode as set out in the feed item.
 
 It is HS256-encrypted with the `preview_secret` retrieved when obtaining the preview token, and appended to a GET request, like so:
 
@@ -68,7 +68,7 @@ A podcast app uses standard content requests to swap a download token for a URL 
 }
 ```
 
-The `sub` value must be set to the `subscriber_hash` that was originally sent to the encryption endpoint. The `content_id` must point to the ID of the episode as set out in the JSON Feed item.
+The `sub` value must be set to the `subscriber_hash` that was originally sent to the encryption endpoint. The `content_id` must point to the ID of the episode as set out in the feed item.
 
 It is then HS256-encrypted with the `subscriber_secret` retrieved when obtaining the download token, and appended to a GET request, like so:
 
@@ -120,7 +120,7 @@ The app passes the transaction ID along with other key information to the hostin
 }
 ```
 
-The `sub` value must be set to the `subscriber_hash` that was originally sent to the encryption endpoint. The `restricted_content_id` must point to the ID of the piece of restricted content, as specified in the JSON feed.
+The `sub` value must be set to the `subscriber_hash` that was originally sent to the encryption endpoint. The `restricted_content_id` must point to the ID of the piece of restricted content, as specified in the feed.
 
 The `bitcoin_tx_id` value refers to the ID of a recent Bitcoin transaction used to pay for the content. The podcast app is responsible for guiding the user through the Bitcoin transaction, but the podcast hosting service is strongly encouraged to verify the transaction on the blockchain.
 
@@ -160,7 +160,7 @@ Once the Bitcoin transaction is confirmed by the hosting service, the service wi
 }
 ```
 
-The `restricted_content_id` value will match the same `id` of the requested piece of restricted content, as specified in the JSON feed. The `subscriber_hash` is used to identify the specific user who requested the content`
+The `restricted_content_id` value will match the same `id` of the requested piece of restricted content, as specified in the feed. The `subscriber_hash` is used to identify the specific user who requested the content`
 
 The request will come in the following form:
 

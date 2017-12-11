@@ -62,7 +62,7 @@ The following are the first-party taxonomies and terms.
 
 ## Required taxonomies
 
-Taxonomies marked with an asterisk (\*) are considered "required taxonomies", and tools validating JSON feeds should check to ensure one of the corresponding taxonomy terms is listed (one or more term from each taxonomy is required).
+Taxonomies marked with an asterisk (\*) are considered "required taxonomies", and tools validating feeds should check to ensure one of the corresponding taxonomy terms is listed (one or more term from each taxonomy is required).
 
 ## Third-party taxonomies and terms
 

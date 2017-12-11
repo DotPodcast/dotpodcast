@@ -45,7 +45,7 @@ ARTICLE_SAVE_AS = '{slug}/index.html'
 HEADER_COVER = 'images/header.jpg'
 MENUITEMS = (
     ('Home', '/'),
-    ('JSON Feed spec v1', '/spec-v1'),
+    ('Feed spec v1', '/spec-v1'),
     ('Taxonomies', '/taxonomies'),
     ('Building a hosting service', '/guides/hosting'),
     ('Building a directory', '/guides/directories'),
@@ -64,7 +64,7 @@ AUTHORS_BIO = {
         'image': 'images/mark-avatar.jpg',
         'website': 'https://steadman.io/',
         'location': 'Birmingham, UK',
-        'bio': 'Mark runs the Podiant podcast hosting service, and handles the JSON Feed spec extension at DotPodcast',
+        'bio': 'Mark runs the Podiant podcast hosting service, and co-authors the feed spec at DotPodcast',
         'twitter': 'iamsteadman',
         'github': 'iamsteadman'
     }

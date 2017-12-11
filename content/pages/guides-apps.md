@@ -12,7 +12,7 @@ This site does not currently maintain a list of directory services.
 
 ## Building your own directory
 
-If you want to, you can build your own directory for use only inside your app, by crawling the Blockstack `podcast` namespace, and parsing the JSON Feed that is specified in each podcast's zone file. See the [DotPodcast for directory developers](../directories) guide.
+If you want to, you can build your own directory for use only inside your app, by crawling the Blockstack `podcast` namespace, and parsing the feed that is specified in each podcast's zone file. See the [DotPodcast for directory developers](../directories) guide.
 
 ## Downloading content
 

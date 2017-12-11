@@ -1,107 +1,82 @@
-Title: DotPodcast JSON feed specification v1
+Title: DotPodcast feed specification v1
 Date: 2017-10-12
 Author: Mark
 Slug: spec-v1
-Summary: Version 1 of the DotPodcast JSON Feed spec
+Summary: Version 1 of the DotPodcast feed spec
 
 
-The DotPodcast JSON Feed spec is derived from the original [JSON Feed](https://jsonfeed.org/) spec, and makes no modifications to its structure. A sample, taken directly from their documentation looks like this:
+The DotPodcast feed spec is inspired by the original [JSON Feed](https://jsonfeed.org/) spec, but diverges significantly in that it requires two files: a header and a body.
 
-```json
-{
-    "version": "https://jsonfeed.org/version/1",
-    "title": "My Example Feed",
-    "home_page_url": "https://example.org/",
-    "feed_url": "https://example.org/feed.json",
-    "items": [
-        {
-            "id": "2",
-            "content_text": "This is a second item.",
-            "url": "https://example.org/second-item"
-        },
-        {
-            "id": "1",
-            "content_html": "<p>Hello, world!</p>",
-            "url": "https://example.org/initial-post"
-        }
-    ]
-}
-```
+## The header file and the body feed
+
+The header file is a JSON file that represents important information about the podcast. The URL to this meta file is hashed, and that hash is stored on the blockchain. The body feed contains a list of all the published episodes of the podcast.
+
+The split is necessary because the header file does not change frequently, meaning the hash of that file also changes rarely. Changes to this kind of information take a while to propagate through the blockchain, so it would be impractical to continually push new updates to the chain upon publication of a new episode, or change to an existing episode.
 
 ## Why JSON and not RSS?
 
 XML (on which RSS is based) is slow and difficult to parse. New apps and services built around podcasting use it because it's what everyone uses, and moving people to another system is difficult, as the RSS spec (and its podcast-specific additions, provided by Apple) were built up over time.
 
-But since DotPodcast is making fundamental changes to the way the entire podcasting ecosystem operates, it makes sense to adopt a more easily-parsable and human-readable syntax. And so, JSON Feed.
+But since DotPodcast is making fundamental changes to the way the entire podcasting ecosystem operates, it makes sense to adopt a more easily-parsable and human-readable syntax. And so, the spec is derived from JSON Feed.
 
-## The DotPodcast JSON Feed extension
+---
 
-The DotPodcast spec adds an extension called `_dotpodcast` to the header section (before the `items` list) and the `items` list itself. For example:
+## [The header file](#the-header-file)
+
+The header file contains information about the podcast itself, in JSON format. An example header file looks like this:
 
 ```json
 {
-    "version": "https://jsonfeed.org/version/1",
-    "title": "My Example Feed",
-    "home_page_url": "https://example.org/",
-    "feed_url": "https://example.org/feed.json",
-    "_dotpodcast": {
-        "about": "DotPodcast-specific information about the feed",
-        "hosts": [
-            {
-                "name": "Geoff",
-                "uri": "htto://example.com/hosts/geoff",
-                "avatar": "htto://example.com/hosts/geoff.jpg"
-            },
-            {
-                "name": "Sally",
-                "uri": "htto://example.com/hosts/sally",
-                "avatar": "htto://example.com/hosts/sally.jpg"
-            }
-        ]
-    },
-    "items": [
+    "version": "https://dotpodcast.co/spec-v1",
+    "title": "My Podcast",
+    "home_page_url": "https://example.com/",
+    "meta_url": "https://example.com/meta.json",
+    "items_url": "https://example.com/items.json",
+    "subscription_url": "https://example.com/subscribe/",
+    "about": "DotPodcast feed",
+    "hosts": [
         {
-            "id": "2",
-            "content_text": "This is a second item.",
-            "url": "https://example.org/second-item",
-            "_dotpodcast": {
-                "hosts": [
-                    "htto://example.com/hosts/sally"
-                ]
-            }
+            "name": "Geoff",
+            "uri": "htto://example.com/hosts/geoff",
+            "avatar": "htto://example.com/hosts/geoff.jpg"
         },
         {
-            "id": "1",
-            "content_html": "<p>Hello, world!</p>",
-            "url": "https://example.org/initial-post",
-            "_dotpodcast": {
-                "about": "DotPodcast-specific information about the episode",
-                "hosts": [
-                    "htto://example.com/hosts/geoff"
-                ]
-            }
+            "name": "Sally",
+            "uri": "htto://example.com/hosts/sally",
+            "avatar": "htto://example.com/hosts/sally.jpg"
         }
     ]
 }
 ```
 
----
+The object contains the following:
 
-## The header object
+- `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec. Example: _http://dotpodcast.org/spec-v1_.
 
-The header `_dotpodcast` object is the one that appears before the list of items. It contains information about the podcast itself, that isn't covered by the JSON Feed spec. The `_podcast` extension object can contain the following:
+- `title` (required, string) is the name of the podcast.
 
-- `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec, not the
-JSON Feed format. Example: _http://dotpodcast.org/spec-v1_.
+- `home_page_url` (required, string) is the URL to the podcast's website.
+
+- `meta_url` (required, string) is the URL to this header file.
+
+- `items_url` (required, string) is the URL to the [body feed](#the-body-feed).
 
 - `subscription_url` (required, string) is the URL to the subscription endpoint, which is used to generate a subscription token that can be exchanged when downloading episodes. See [Subscription tokens](../subscription-tokens) for more information.
 
-- `feed_title` (optional, string) is the title of the feed as it should appear in a podcast app or directory. This may be different from the name of the JSON Feed itself.
+- `author` (optional, object) specifies the podcast author. The author object has several members. These are all optional, but if you provide an author object, then at least one is required:
+
+  - `name` (optional, string) is the author’s name.
+
+  - `url` (optional, string) is the URL of a site owned by the author. It could be a blog, microblog, Twitter account, and so on. Ideally the linked-to page provides a way to contact the author, but that’s not required.
+
+  - `avatar` (optional, string) is the URL for an image for the author. It should be square and relatively large — such as 512x512 — and should use transparency where appropriate, since it may be rendered on a non-white background.
 
 - `artwork` (optional but highly recommended, object) specifies the podcast cover artwork at varying sizes:
     - `@1x` (required, string) is the URL to a 1400x1400 image.
     - `@2x` (required, string) is the URL to a 2800x2800 image.
     - Any other sizes can be added here, that may be supported by third-party directories such as Apple Podcasts.
+
+- `expired` (optional, boolean) says whether or not the podcast is finished (that is, whether or not it will ever update again). If the value is `true`, then it’s expired. Any other value, or the absence of `expired`, means the feed may continue to update.
 
 - `subtitle` (optional but recommended, string) is a short sentence that describes the podcast. For example, a podcast title might be "Beware of the Leopard", with a subtitle of "The Hitchhiker's Guide to the Galaxy podcast".
 
@@ -133,15 +108,60 @@ Instead of marking a show as containing "explicit" language or not, podcasters a
 
 ---
 
-## The item object
+## [The body feed](#the-body-feed)
 
-Each episode in the feed is represented by an object within the `items` array. as with the header object, all the pre-existing JSON Feed specs apply.  The `_podcast` extension object inside an item object can contain the following:
+The body feed is a JSON-formatted array of episodes. An example feed looks like this:
+
+```json
+{
+    "meta": {
+        "next_url": "https://example.com/items.json?page=2",
+        "previous_url": null,
+        "total_count": 30,
+        "per_page": 10
+    },
+    "items": [
+        {
+            "id": "1",
+            "title": "Episode one",
+            "url": "https://example.com/1/",
+            "content_audio": {
+                "mime_type": "audio/mpeg",
+                "url": "https://example.com/1/download/",
+                "file_size": 28800000
+            },
+            "content_text": "This is the first episode.",
+        },
+        ...
+    ]
+}
+```
+
+### The `meta` object
+
+The `meta` object contains information about the returned data, and a simple way to retrieve the next set of items. The hosting provider may choose to paginate results, delivering, say, 10 results per page. In this case, the `next_url` property should contain a full URL to the next set of 10 results. If the second page of results is being returned, `previous_url` should point to the previous page.
+
+`total_count` should return the total number of episodes available in the feed, and `per_page` should return the number of episodes in this current paginated list.
+
+### The `items` object
+
+This should be an array of published episodes. An item object contains:
+
+- `id` (required, string) is unique for that episode. If an episode is ever updated, the ID should be unchanged. New episodes should never use a previously-used ID. If an ID is presented as a number or other type, a podcast app or directory service must coerce it to a string. Ideally, the ID is the full URL of the episode's web page (not the episode audio or video content), since URLs make great unique identifiers.
+
+- `url` (optional, string) is the URL of the episode. It’s the permalink. This may be the same as the ID, but should be present regardless.
+
+- `title` (optional, string) is the plain text episode title.
+
+- `summary` (optional, string) is a plain text sentence or two describing the episode.
 
 - `season_number` (optional, integer) is the season number of the podcast, if applicable. If not, the value should be omitted.
 
 - `episode_number` (optional, integer) is the number of the episode within the season. If the podcast is not season-based, this value, along with `season_number` should be omitted.
 
 - `subtitle` (optional, string) is a short sentence that describes the episode.
+
+- `content_html` and `content_text` are each optional strings, but one or both must be present. This is the HTML or plain text of the item. Important: the only place HTML is allowed in this format is in `content_html`.
 
 - `content_audio` (required if `content_video` is not supplied, object) describes the audio content file type and location:
     - `mime_type` (required, string) is the MIME type of the audio file (for example: `audio/mpeg`)
@@ -165,10 +185,6 @@ Each episode in the feed is represented by an object within the `items` array. a
         - `primary`: this content replaces the main, unrestricted content rather than adds to it
         - `bonus`: this is bonus content that can be listened to before or after the main content
 - `taxonomy_terms` (very optional, array) is a collection of taxonomy term URIs that categorise the episode. These are considered supplementary to the podcast's global taxonomy terms, so are useful for a one-off episode exploring a particular topic, or a film podcast that reviews a different film each week.
-
-### Why no `attachments`?
-
-The DotPodcast JSON Feed spec does not include the `attachments` array, as the podcast spec requires more information, and adding an extra `_dotpodcast` extension to each attachment object would reduce readability of the feed.
 
 ### Content URLs
 

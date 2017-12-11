@@ -4,11 +4,11 @@ Slug: guides/hosting
 
 Although DotPodcast allows content creators to host their audio and generate income directly, many will choose to use a trusted provider to handle the technical details.
 
-Hosting providers are responsible for producing the JSON Feed, validating Bitcoin transactions that accrue when restricted content is paid for, and usually providing analytics.
+Hosting providers are responsible for producing the feed, validating Bitcoin transactions that accrue when restricted content is paid for, and usually providing analytics.
 
 ## Providing the feed
 
-Read the [JSON Feed spec](../../spec-v1) to find out how to produce a feed, and for an idea as to how you'll structure your database.
+Read the [DotPodcast Feed spec](/spec-v1) to find out how to produce a feed, and for an idea as to how you'll structure your database.
 
 ## Serving audio/video content
 

@@ -40,7 +40,7 @@ This may also be considiered "K - 12"
 ### [Educational technology](#educational-technology)
 ### [Training](#training)
 
-## [Communication](Communication)
+## [Communication](#communication)
 ### [Film](#film)
 ### [Music](#music)
 ### [TV](#tv)
