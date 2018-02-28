@@ -22,7 +22,7 @@ A podcast directory or app uses preview requests to swap a preview token for a U
     "iss": "DotPodcast Player",
     "iat": 1508170987,
     "exp": 1539706987,
-    "aud": "https://player.dotpodcast.org/",
+    "aud": "https://player.dotpodcast.co/",
     "sub": "preview",
     "content_id": "http://thedotpodcastshow.com/episode-1/"
 }
@@ -62,7 +62,7 @@ A podcast app uses standard content requests to swap a download token for a URL 
     "iss": "DotPodcast Player",
     "iat": 1508170987,
     "exp": 1539706987,
-    "aud": "https://player.dotpodcast.org/",
+    "aud": "https://player.dotpodcast.co/",
     "sub": "preview",
     "content_id": "http://thedotpodcastshow.com/episode-1/"
 }
@@ -112,11 +112,11 @@ The app passes the transaction ID along with other key information to the hostin
     "iss": "DotPodcast Player",
     "iat": 1508170987,
     "exp": 1539706987,
-    "aud": "https://player.dotpodcast.org/",
+    "aud": "https://player.dotpodcast.co/",
     "sub": "eae950252dec7434b6d98d16dfc8dbd63552ba27",
     "bitcoin_tx_id": "<bitcoin transaction id>",
     "restricted_content_id": "http://thedotpodcastshow.com/episode-1/ad-free/",
-    "callback_url": "https://player.dotpodcast.org/dp-callback/?id=7b9cbac6-6193-4292-a2d8-0880a0a60aaf"
+    "callback_url": "https://player.dotpodcast.co/dp-callback/?id=7b9cbac6-6193-4292-a2d8-0880a0a60aaf"
 }
 ```
 
@@ -166,7 +166,7 @@ The request will come in the following form:
 
 ```
 GET /dp-callback/?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJEb3RQb2RjYXN0IFBsYXllciIsImlhdCI6MTUwODE3MDk4NywiZXhwIjoxNTM5NzA2OTg3LCJhdWQiOiJodHRwczovL3BsYXllci5kb3Rwb2RjYXN0Lm9yZy8iLCJzdWIiOiJlYWU5NTAyNTJkZWM3NDM0YjZkOThkMTZkZmM4ZGJkNjM1NTJiYTI3IiwiYml0Y29pbl90eF9pZCI6IjxiaXRjb2luIHRyYW5zYWN0aW9uIGlkPiIsImNhbGxiYWNrX3VybCI6Imh0dHBzOi8vcGxheWVyLmRvdHBvZGNhc3Qub3JnL2RwLWNhbGxiYWNrLz9pZD03YjljYmFjNi02MTkzLTQyOTItYTJkOC0wODgwYTBhNjBhYWYifQ.ennQTBu0j8U0_dEVS6wkRqNpcxBBcvaDF2gnV4Ol1no HTTP/1.1
-Host: player.dotpodcast.org
+Host: player.dotpodcast.co
 ```
 
 The app will decrypt the token using the `subscriber_secret` obtained earlier, and download the content on behalf of the user, or send a push notification to that effect.
@@ -184,7 +184,7 @@ The app passes the original transaction ID along with other key information to t
     "iss": "DotPodcast Player",
     "iat": 1508170987,
     "exp": 1539706987,
-    "aud": "https://player.dotpodcast.org/",
+    "aud": "https://player.dotpodcast.co/",
     "sub": "eae950252dec7434b6d98d16dfc8dbd63552ba27",
     "bitcoin_tx_id": "<bitcoin transaction id>",
     "restricted_content_id": "http://thedotpodcastshow.com/episode-1/ad-free/"

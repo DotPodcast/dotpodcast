@@ -34,7 +34,7 @@ Content-Type: application/json
 
 {
     "app_name": "DotPodcast Directory",
-    "app_url": "https://directory.dotpodcast.org/",
+    "app_url": "https://directory.dotpodcast.co/",
     "token_kind": "preview"
 }
 ```
@@ -66,8 +66,8 @@ Content-Type: application/json
 
 {
     "app_name": "DotPodcast Player",
-    "app_url": "https://player.dotpodcast.org/",
-    "app_logo": "https://player.dotpodcast.org/img/logo.svg",
+    "app_url": "https://player.dotpodcast.co/",
+    "app_logo": "https://player.dotpodcast.co/img/logo.svg",
     "token_kind": "download",
     "subscriber_hash": "eae950252dec7434b6d98d16dfc8dbd63552ba27",
     "subscriber_details": {

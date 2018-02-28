@@ -51,7 +51,7 @@ The header file contains information about the podcast itself, in JSON format. A
 
 The object contains the following:
 
-- `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec. Example: _http://dotpodcast.org/spec-v1_.
+- `version` (required, string) is the URL of the version of the format the feed uses. This is the version of the DotPodcast spec. Example: _http://dotpodcast.co/spec-v1_.
 
 - `title` (required, string) is the name of the podcast.
 
