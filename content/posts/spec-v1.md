@@ -33,7 +33,6 @@ The header file contains information about the podcast itself, in JSON format. A
     "meta_url": "https://example.com/meta.json",
     "items_url": "https://example.com/items.json",
     "subscription_url": "https://example.com/subscribe/",
-    "about": "DotPodcast feed",
     "hosts": [
         {
             "name": "Geoff",
